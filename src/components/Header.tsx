@@ -1,11 +1,7 @@
-import {
-  ChevronDown,
-  ChevronLeft,
-  ShoppingCart,
-  UserCircle2,
-} from 'lucide-react'
+import { ChevronDown, ChevronLeft, UserCircle2 } from 'lucide-react'
 import deliverizeLogo from '../assets/deliverize-logo.png'
 import Image from 'next/image'
+import { Cart } from './Cart'
 
 export function Header() {
   return (
@@ -35,13 +31,7 @@ export function Header() {
           <span className="text-crimson-red">Entrar</span>
         </div>
 
-        <div className="hidden md:flex cursor-pointer gap-2 relative">
-          <ShoppingCart className="text-crimson-red" />{' '}
-          <span className="text-crimson-red">Carrinho</span>
-          <span className="absolute -top-2 left-4 flex items-center justify-center bg-secondary text-white w-4 h-4 rounded-full text-xs ">
-            3
-          </span>
-        </div>
+        <Cart />
       </div>
       {/* </div> */}
     </header>

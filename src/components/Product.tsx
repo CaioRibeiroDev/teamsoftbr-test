@@ -1,7 +1,14 @@
 import Image from 'next/image'
 import hamburguer from '../assets/hamburguer.png'
+import { IProduct } from '@/data/product'
+import { numberFormatReal } from '@/util/numberFormatReal'
+import { targetProductId } from '@/app/page'
 
-export function Product() {
+interface ProductProps {
+  item: IProduct[]
+}
+
+export function Product({ item }: ProductProps) {
   return (
     <div className="flex flex-col">
       <Image
@@ -11,16 +18,18 @@ export function Product() {
       />
       <div className="flex flex-col gap-4 mx-4">
         <h2 className="font-medium text-lg md:text-2xl md:max-w-[597px]">
-          Oferta picanha cheddar bacon
+          {item[targetProductId].nm_product}
         </h2>
         <p className="md:text-lg md:max-w-[597px]">
-          Delicioso hambúrguer de picanha, molho de picanha, cebola crispy,
-          bacon, queijo cheddar, molho cheddar e pão mix de gergelim,
-          acompanhamento e bebida.
+          {item[targetProductId].description}
         </p>
         <div className="flex gap-4">
-          <span className="text-secondary md:text-3xl">R$31,99</span>
-          <span className="line-through md:text-3xl">R$34,95</span>
+          <span className="text-secondary md:text-3xl">
+            {numberFormatReal(item[targetProductId].vl_discount)}
+          </span>
+          <span className="line-through md:text-3xl">
+            {numberFormatReal(item[targetProductId].vl_price)}
+          </span>
         </div>
       </div>
     </div>

@@ -1,17 +1,38 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Minus, Plus } from 'lucide-react'
 
-export function QuantityAdjuster() {
+interface QuantityAdjusterProps {
+  maxItems?: number
+  onQuantity?: (newAmount: number) => void
+  quantityCurrent?: number
+  formKey?: string
+}
+
+export function QuantityAdjuster({
+  maxItems = 0,
+  onQuantity = () => {},
+  formKey = '',
+}: QuantityAdjusterProps) {
   const [quantity, setQuantity] = useState(0)
 
+  useEffect(() => {
+    setQuantity(0)
+  }, [formKey])
+
   function removeQuantity() {
-    if (quantity >= 1) setQuantity(quantity - 1)
+    if (quantity >= 1) {
+      setQuantity(quantity - 1)
+      onQuantity(quantity - 1)
+    }
   }
 
   function addQuantity() {
-    setQuantity(quantity + 1)
+    if (quantity < maxItems) {
+      setQuantity(quantity + 1)
+      onQuantity(quantity + 1)
+    }
   }
 
   return (
