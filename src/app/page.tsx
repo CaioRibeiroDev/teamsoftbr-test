@@ -1,16 +1,10 @@
 import { Header } from '@/components/Header'
 import { Product } from '@/components/Product'
-import { CartItem, IProduct } from '@/data/product'
+import { IProduct } from '@/data/product'
 import { Form } from '@/components/Form'
 import { StoreContextProvider } from '@/context/StoreContext'
 
-export const targetProductId = 0 // No caso o id seria pego pelo parametro
-
-interface HomeProps {
-  onItemsCart: (items: CartItem[]) => void
-}
-
-export default async function Home({ onItemsCart }: HomeProps) {
+export default async function Home() {
   const response = await fetch(
     'https://6077803e1ed0ae0017d6aea4.mockapi.io/test-frontend/products',
     {

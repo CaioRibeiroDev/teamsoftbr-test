@@ -1,6 +1,5 @@
 'use client'
 
-import { targetProductId } from '@/app/page'
 import { AddIngredient } from './AddIngredient'
 import { QuantityAdjuster } from './QuantityAdjuster'
 import { IProduct, QuantityIngredients } from '@/data/product'
@@ -18,6 +17,7 @@ export function Form({ products }: FormProps) {
   const [quantityIngredients, setQuantityIngredients] =
     useState<QuantityIngredients>({})
   const [isFormReset, setFormReset] = useState(0)
+  const targetProductId = 0 // No caso o id seria pego pelo parametro
 
   const ingredientsTotal = Object.entries(quantityIngredients).reduce(
     (lastValue, [key, value]) => {
