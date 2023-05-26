@@ -5,6 +5,7 @@ import { QuantityAdjuster } from './QuantityAdjuster'
 import { IProduct, QuantityIngredients, targetProductId } from '@/data/product'
 import { FormEvent, useState } from 'react'
 import { useStore } from '@/context/StoreContext'
+import { toast, Toaster } from 'react-hot-toast'
 
 interface FormProps {
   products: IProduct[]
@@ -34,6 +35,10 @@ export function Form({ products }: FormProps) {
     event.preventDefault()
 
     store.onAddItemCart({ products, quantityHamburguer, quantityIngredients })
+
+    toast.success('Adicionado ao carrinho com sucesso!', {
+      position: 'bottom-left',
+    })
 
     setQuantityHamburguer(0)
     setQuantityIngredients({})
@@ -121,6 +126,7 @@ export function Form({ products }: FormProps) {
       </div>
       <span className="font-bold">Total: </span>{' '}
       <span className="text-green-500">R$ {priceTotal.toFixed(2)}</span>
+      <Toaster />
     </form>
   )
 }
