@@ -11,7 +11,7 @@ export function Product({ item }: ProductProps) {
   return (
     <div className="flex flex-col">
       <Image
-        src={hamburguer}
+        src={hamburguer} // Não foi colocado o link da imagem pois ela retorna 404
         alt=""
         className="flex self-center w-56 md:w-[597px] "
       />
