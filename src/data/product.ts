@@ -45,3 +45,5 @@ export interface CartItem {
     }
   }
 }
+
+export const targetProductId = 0 // No caso o id seria pego pelo parametro

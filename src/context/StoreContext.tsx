@@ -1,7 +1,11 @@
 'use client'
 
-import { targetProductId } from '@/app/page'
-import { CartItem, IProduct, QuantityIngredients } from '@/data/product'
+import {
+  CartItem,
+  IProduct,
+  QuantityIngredients,
+  targetProductId,
+} from '@/data/product'
 import { ReactNode, createContext, useContext, useState } from 'react'
 
 interface OnAddItemCartProps {

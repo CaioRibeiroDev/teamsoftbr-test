@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import hamburguer from '../assets/hamburguer.png'
-import { IProduct } from '@/data/product'
+import { IProduct, targetProductId } from '@/data/product'
 import { numberFormatReal } from '@/util/numberFormatReal'
 
 interface ProductProps {
@@ -17,15 +17,17 @@ export function Product({ item }: ProductProps) {
       />
       <div className="flex flex-col gap-4 mx-4">
         <h2 className="font-medium text-lg md:text-2xl md:max-w-[597px]">
-          {item[0].nm_product}
+          {item[targetProductId].nm_product}
         </h2>
-        <p className="md:text-lg md:max-w-[597px]">{item[0].description}</p>
+        <p className="md:text-lg md:max-w-[597px]">
+          {item[targetProductId].description}
+        </p>
         <div className="flex gap-4">
           <span className="text-secondary md:text-3xl">
-            {numberFormatReal(item[0].vl_discount)}
+            {numberFormatReal(item[targetProductId].vl_discount)}
           </span>
           <span className="line-through md:text-3xl">
-            {numberFormatReal(item[0].vl_price)}
+            {numberFormatReal(item[targetProductId].vl_price)}
           </span>
         </div>
       </div>
